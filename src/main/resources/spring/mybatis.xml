@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+		<setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="defaultStatementTimeout" value="10" />
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- 此项是针对 java+mybatis 模式的配置方式，在spring环境下就不需要这样配置了 -->
+		<!-- <setting name="defaultScriptingLanguage" value="com.viiyue.plugins.mybatis.MyBatisMapperLanguageDriver" />  -->
+	</settings>
+</configuration>
