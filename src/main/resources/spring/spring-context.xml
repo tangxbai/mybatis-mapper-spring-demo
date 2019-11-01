@@ -29,40 +29,29 @@
 	</bean>
 
 	<!-- MyBatis SqlSessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- 替换Mybatis原来的 org.mybatis.spring.SqlSessionFactoryBean，保留mybatis所有原始参数，新增偏好配置选项 -->
+	<bean id="sqlSessionFactory" class="com.viiyue.plugins.mybatis.spring.MyBatisMapperSqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		
 		<!-- 省略其他配置 -->
 		<!-- <property name="..." value="..." /> -->
 		
+		<!-- 集成偏好配置 -->
+		<property name="enableLogger" value="true" />
+		<property name="enableRuntimeLog" value="true" />
+		<property name="enableCompilationLog" value="true" />
+		<property name="enableXmlSyntaxParsing" value="true" />
+		<property name="enableKeywordsToUppercase" value="true" />
+		<property name="databaseColumnStyle" value="#" />
+		
 		<!-- 在spring环境下，mybatis配置文件不是必要的 -->
-		<!-- <property name="configLocation" value="classpath:spring/mybatis.xml" /> -->
+		<property name="configLocation" value="classpath:spring/mybatis.xml" />
 
 		<!-- 配置XML文件 -->
 		<property name="mapperLocations" value="classpath:mapper/*Mapper.xml" />
 		
 		<!-- 实体对象别名配置，在mybatis-mapper环境下，此项必须开启 -->
 		<property name="typeAliasesPackage" value="com.viiyue.mapper.spring.demo.model;com.viiyue.mapper.spring.demo.bean" />
-		
-		<!-- Spring环境下启用XML模板语法的方式 -->
-		<property name="defaultScriptingLanguageDriver" value="com.viiyue.plugins.mybatis.MyBatisMapperLanguageDriver"/>
-		
-		<!-- 启用mybatis-mapper插件 -->
-		<property name="sqlSessionFactoryBuilder">
-			<bean class="com.viiyue.plugins.mybatis.MyBatisMapperFactoryBuilder" />
-		</property>
-		
-		<!-- mybatis-mapper偏好配置 -->
-		<property name="configurationProperties">
-			<props>
-				<prop key="enableLogger">true</prop>
-				<prop key="enableRuntimeLog">true</prop>
-				<prop key="enableCompilationLog">true</prop>
-				<prop key="enableOptimisticLock">true</prop>
-				<prop key="enableKeywordsToUppercase">true</prop>
-				<prop key="databaseColumnStyle">#</prop>
-			</props>
-		</property>
 	</bean>
 
 	<!-- 扫描Mapper接口 -->
@@ -71,7 +60,7 @@
 		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-
+	
 	<!-- Transaction manager -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
