@@ -1,4 +1,4 @@
-# Mybatis-mapper-spring-demo
+# mybatis-mapper-spring-demo
 使用说明：
 
 将项目克隆到本地后，先执行SQL脚本 `document/tester.sql` 创建数据库和表，然后运行测试程序 `App`，分别调用不同方法即可体验运行效果。

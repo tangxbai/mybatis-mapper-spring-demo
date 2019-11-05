@@ -19,7 +19,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<!-- 为了演示这里使用Spring自带的数据源，就单独引入其他数据源作为演示了。 -->
+	<!-- 为了演示这里使用Spring自带的数据源，就不单独引入其他数据源作为演示了 -->
 	<!-- 在实际情况中请更换成自己平时使用的数据源 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="url" value="${db.url}" />
@@ -39,6 +39,7 @@
 		<!-- 集成偏好配置 -->
 		<property name="enableLogger" value="true" />
 		<property name="enableRuntimeLog" value="true" />
+		<property name="enableMapperScanLog" value="true" />
 		<property name="enableCompilationLog" value="true" />
 		<property name="enableXmlSyntaxParsing" value="true" />
 		<property name="enableKeywordsToUppercase" value="true" />
@@ -49,6 +50,9 @@
 
 		<!-- 配置XML文件 -->
 		<property name="mapperLocations" value="classpath:mapper/*Mapper.xml" />
+		
+		<!-- 全局类型转换处理器 -->
+		<property name="typeHandlersPackage" value="com.viiyue.mapper.spring.demo.handler"/>
 		
 		<!-- 实体对象别名配置，在mybatis-mapper环境下，此项必须开启 -->
 		<property name="typeAliasesPackage" value="com.viiyue.mapper.spring.demo.model;com.viiyue.mapper.spring.demo.bean" />

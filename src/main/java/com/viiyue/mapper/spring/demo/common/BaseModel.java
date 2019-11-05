@@ -40,7 +40,7 @@ public class BaseModel {
 	private Long id;
 	
 	@Index( Integer.MAX_VALUE - 4 )
-	@Column( jdcbType = Type.CHAR, typeHandler = BooleanTypeHandler.class )
+	@Column( jdcbType = Type.CHAR )
 	@LogicallyDelete( selectValue = "Y", deletedValue = "N" ) // 开启逻辑删除支持，只能配置一次
 	private Boolean display;
 
