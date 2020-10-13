@@ -14,7 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<log4j.version>1.7.28</log4j.version>
 		<lombok.version>1.16.20</lombok.version>
 		<spring.version>4.3.5.RELEASE</spring.version>
